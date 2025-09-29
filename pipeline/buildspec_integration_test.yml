@@ -1,0 +1,19 @@
+version: 0.2
+cache:
+  paths:
+    - '/root/.cache/pip/**/*'
+    - '.aws-sam/cache/**/*'
+    - '/root/.npm/**/*'
+    - 'node_modules/**/*'
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+    commands:
+      - node -v && npm -v
+      - npm install
+  build:
+    commands:
+      # trigger the integration tests here
+      - echo 'Running integration tests'
+      - npm run test:integration
