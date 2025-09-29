@@ -1,0 +1,15 @@
+version = 0.1
+
+[default]
+region = "eu-west-3"
+capabilities = "CAPABILITY_IAM"
+
+[preprod.deploy.parameters]
+stack_name = "sport-preprod"
+parameter_overrides = "Env=preprod FunctionName=sport-authorizer-preprod AppName=sport DeployPrefType=AllAtOnce"
+no_confirm_changeset = true
+
+[prod.deploy.parameters]
+stack_name = "sport-prod"
+parameter_overrides = "Env=prod FunctionName=sport-authorizer-prod AppName=sport DeployPrefType=Canary10Percent5Minutes"
+no_confirm_changeset = true

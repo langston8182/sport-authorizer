@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Sport authorizer - Two stacks (preprod/prod) with AppConfig and Canary in prod
+
+Parameters:
+  Env:
+    Type: String
+    AllowedValues: [preprod, prod]
+  FunctionName:
+    Type: String
+    Default: sport-authorizer
+  AppName:
+    Type: String
+    Default: sport
+  DeployPrefType:
+    Type: String
+    AllowedValues: [AllAtOnce, Canary10Percent5Minutes]
+    Default: AllAtOnce
+
+Globals:
+  Function:
+    Runtime: nodejs22.x
+    Architectures: [arm64]
+    MemorySize: 512
+    Timeout: 15
+    Tracing: Active
+    Environment:
+      Variables:
+        APP_NAME: !Ref AppName
+        ENVIRONMENT: !Ref Env
+        LOG_LEVEL: info
+
+Resources:
+  SportFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Ref FunctionName
+      CodeUri: ./
+      Handler: src/authorizers/cookie-jwt-authorizer.handler
+      AutoPublishAlias: Live
+      DeploymentPreference:
+        Type: !Ref DeployPrefType              # AllAtOnce en preprod, Canary en prod
+        Alarms: []                             # ajoute ici les noms d'alarmes CloudWatch
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - Statement:
+            - Effect: Allow
+              Action:
+                - appconfig:StartConfigurationSession
+                - appconfig:GetLatestConfiguration
+              Resource: "*"
+
+Outputs:
+  FunctionArn:
+    Value: !GetAtt SportFunction.Arn
+  LiveAliasArn:
+    Value: !Sub "${SportFunction.Arn}:Live"
