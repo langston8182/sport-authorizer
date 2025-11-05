@@ -4,7 +4,9 @@ import {getConfigValue} from "../utils/config.appconfig.mjs";
 
 const ENV = process.env.ENVIRONMENT || "preprod";
 
-const COOKIE_NAME = 'access_token'; // nom du cookie à extraire
+const APP_NAME = process.env.APP_NAME;
+
+const COOKIE_NAME = `${APP_NAME}_access_token`; // nom du cookie à extraire
 
 let cachedCognitoCfg = null;
 let cachedCognitoCfgPromise = null;
