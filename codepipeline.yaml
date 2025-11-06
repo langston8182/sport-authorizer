@@ -47,10 +47,10 @@ Parameters:
     Default: "sport-authorizer-preprod"
   TestingPipelineExecutionRole:
     Type: String
-    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-preprod-p-PipelineExecutionRole-lJtlDVgzKhnF"
+    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-preprod-p-PipelineExecutionRole-2dCVq95G0v4S"
   TestingCloudFormationExecutionRole:
     Type: String
-    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-prepr-CloudFormationExecutionRo-X8u0WngAYAK1"
+    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-prepr-CloudFormationExecutionRo-ROKFZizvEmfZ"
   TestingArtifactBucket:
     Type: String
     Default: "cmarchive-sport-artifact"
@@ -68,10 +68,10 @@ Parameters:
     Default: "sport-authorizer-prod"
   ProdPipelineExecutionRole:
     Type: String
-    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-45HmwauKIBaa"
+    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-hJtTL2LTZ9KC"
   ProdCloudFormationExecutionExeRole:
     Type: String
-    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-prod--CloudFormationExecutionRo-VAtb9lZEbTRh"
+    Default: "arn:aws:iam::489767271637:role/aws-sam-cli-managed-prod--CloudFormationExecutionRo-zXwbaKCFy12m"
   ProdArtifactBucket:
     Type: String
     Default: "cmarchive-sport-artifact"
@@ -561,7 +561,7 @@ Resources:
     Properties:
       Cache:
         Type: S3
-        Location: cmarchive-sport-artifact/codebuild-cache
+        Location: cmarchive-shoplist-artifact/codebuild-cache
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -595,7 +595,7 @@ Resources:
     Properties:
       Cache:
         Type: S3
-        Location: cmarchive-sport-artifact/codebuild-cache
+        Location: cmarchive-shoplist-artifact/codebuild-cache
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -649,7 +649,7 @@ Resources:
     Properties:
       Cache:
         Type: S3
-        Location: cmarchive-sport-artifact/codebuild-cache
+        Location: cmarchive-shoplist-artifact/codebuild-cache
       Artifacts:
         Type: CODEPIPELINE
       Environment:
