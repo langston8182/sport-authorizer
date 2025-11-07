@@ -5,7 +5,6 @@ cache:
     - '.aws-sam/cache/**/*'
     - '/root/.npm/**/*'
     - 'node_modules/**/*'
-
 phases:
   install:
     runtime-versions:

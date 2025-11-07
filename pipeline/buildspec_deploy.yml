@@ -24,4 +24,3 @@ phases:
                     --role-arn ${ENV_CLOUDFORMATION_EXECUTION_ROLE}
                     --config-env ${ENV_NAME}
                     --config-file pipeline/samconfig.toml
-

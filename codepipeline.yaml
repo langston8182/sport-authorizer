@@ -561,7 +561,7 @@ Resources:
     Properties:
       Cache:
         Type: S3
-        Location: cmarchive-shoplist-artifact/codebuild-cache
+        Location: cmarchive-sport-artifact/codebuild-cache
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -595,7 +595,7 @@ Resources:
     Properties:
       Cache:
         Type: S3
-        Location: cmarchive-shoplist-artifact/codebuild-cache
+        Location: cmarchive-sport-artifact/codebuild-cache
       Artifacts:
         Type: CODEPIPELINE
       Environment:
@@ -649,7 +649,7 @@ Resources:
     Properties:
       Cache:
         Type: S3
-        Location: cmarchive-shoplist-artifact/codebuild-cache
+        Location: cmarchive-sport-artifact/codebuild-cache
       Artifacts:
         Type: CODEPIPELINE
       Environment:
